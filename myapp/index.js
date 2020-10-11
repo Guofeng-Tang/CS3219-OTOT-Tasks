@@ -1,6 +1,9 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
+const nconf = require('nconf');
+
+nconf.argv().env().file('keys.json');
 
 // Initialise the app
 let app = express();
@@ -16,7 +19,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true });
+let uri = nconf.get('mongoDBURI');
+mongoose.connect(uri, { useNewUrlParser: true });
 var db = mongoose.connection;
 
 // Added check for DB connection
