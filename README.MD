@@ -1,10 +1,3 @@
-# CS3219-Task-A: Docker Nginx Simple Reverse Proxy Server
+# CS3219 OTOT Tasks
 
-### Overview
-
-A very simple Nginx reverse proxy server that displays `PING PING` and `pong pong` in round robin fashion achieved by Nginx load balancing.
-
-### Instructions
-* Start server with `docker-compose up -d`
-* Visit the webpage at `http://localhost:80`
-* Stop server with `docker-compose down`
+Content of each task is in its respective branch e.g. TaskA, TaskB.
