@@ -36,6 +36,7 @@ exports.new = function (req, res) {
             });
         } else {
             res.json({
+                status: "success",
                 message: 'New user created!',
                 data: user
             });
@@ -53,6 +54,7 @@ exports.view = function (req, res) {
             });
         } else {
             res.json({
+                status: "success",
                 message: 'User details retrieved',
                 data: user
             });
@@ -63,21 +65,27 @@ exports.view = function (req, res) {
 // Handle update user info
 exports.update = function (req, res) {
     User.findById(req.params.user_id, function (err, user) {
-        if (err)
-            res.send(err);
-        user.screenName = req.body.screenName ? req.body.screenName : user.screenName;
-        user.profilePicSrc = req.body.profilePicSrc ? req.body.profilePicSrc : user.profilePicSrc;
-        user.age = req.body.age ? req.body.age : user.age;
-
-        // save the user 
-        user.save(function (err) {
-            if (err)
-                res.json(err);
+        if (err) {
             res.json({
-                message: 'User details updated',
-                data: user
+                status: "error",
+                message: err,
             });
-        });
+        } else {
+            user.screenName = req.body.screenName ? req.body.screenName : user.screenName;
+            user.profilePicSrc = req.body.profilePicSrc ? req.body.profilePicSrc : user.profilePicSrc;
+            user.age = req.body.age ? req.body.age : user.age;
+
+            // save the user
+            user.save(function (err) {
+                if (err)
+                    res.json(err);
+                res.json({
+                    status: "success",
+                    message: 'User details updated',
+                    data: user
+                });
+            });
+        }
     });
 };
 
