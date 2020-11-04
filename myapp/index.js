@@ -1,9 +1,6 @@
 let express = require('express');
 let bodyParser = require('body-parser');
-let mongoose = require('mongoose');
-const nconf = require('nconf');
-
-nconf.argv().env().file('keys.json');
+const getDB = require('./db')
 
 // Initialise the app
 let app = express();
@@ -18,16 +15,8 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-// Connect to Mongoose and set connection variable
-let uri = nconf.get('mongoDBURI');
-mongoose.connect(uri, { useNewUrlParser: true });
-var db = mongoose.connection;
-
-// Added check for DB connection
-if (!db)
-    console.log("Error connecting db")
-else
-    console.log("Db connected successfully")
+// Connect to Mongoose
+getDB()
 
 // Setup server port
 var port = process.env.PORT || 8080;
