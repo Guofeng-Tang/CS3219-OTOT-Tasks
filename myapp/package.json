@@ -12,14 +12,16 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.10.9",
-    "nconf": "^0.10.0"
+    "serverless": "^2.10.0"
   },
   "devDependencies": {
     "@google-cloud/functions-framework": "^1.7.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "mocha": "^8.2.1"
+    "mocha": "^8.2.1",
+    "serverless-google-cloudfunctions": "^3.1.1"
   }
 }

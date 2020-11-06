@@ -1,6 +1,7 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 const getDB = require('./db')
+let cors = require("cors");
 
 // Initialise the app
 let app = express();
@@ -14,6 +15,8 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+
+app.use(cors());
 
 // Connect to Mongoose
 getDB()
