@@ -4,7 +4,7 @@ provider:
   name: google
   runtime: 'nodejs10'
   project: 'cs3219-otot-task-b'
-  credentials: ~/.gcloud/keyfile.json # path must be absolute
+  credentials: ${env:KEYFILE_PATH}
 
 plugins:
   - serverless-google-cloudfunctions

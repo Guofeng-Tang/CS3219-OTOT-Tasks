@@ -2,3 +2,11 @@ language: node_js
 node_js:
   - 14.4.0
 before_install: cd myapp
+install:
+  - npm install
+  - npm install -g serverless
+deploy:
+  provider: script
+  script: bash deploy.sh
+  on:
+    branch: TaskB3-serverless-w-gcloud
