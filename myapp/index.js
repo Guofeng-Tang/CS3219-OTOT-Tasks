@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 getDB()
 
 // Setup server port
-var port = process.env.PORT || 8080;
+let port = 8081;
 
 // Send message for default URL
 app.get('/', (req, res) => res.send('Welcome to my Task B site'));
@@ -32,4 +32,6 @@ app.listen(port, function () {
     console.log("Running RestHub on port " + port);
 });
 
-module.exports = app;
+module.exports = {
+    app,
+};
