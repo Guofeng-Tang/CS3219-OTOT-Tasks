@@ -3,8 +3,9 @@ node_js:
   - 14.4.0
 before_install: cd myapp
 install:
-  - npm install
   - npm install -g serverless
+  - npm install serverless-google-cloudfunctions
+  - npm install
 deploy:
   provider: script
   script: bash deploy.sh
