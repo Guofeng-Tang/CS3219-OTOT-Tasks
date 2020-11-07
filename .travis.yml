@@ -4,6 +4,8 @@ node_js:
 before_install: cd myapp
 install:
   - npm install
+scirpt:
+  - npm test
 before_deploy:
   - npm install -g serverless
   - npm install serverless-google-cloudfunctions
