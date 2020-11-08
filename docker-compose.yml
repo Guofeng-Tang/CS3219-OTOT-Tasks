@@ -1,0 +1,69 @@
+x-env-zoo-servers: &env-zoo-servers
+    ZOO_SERVERS: >
+        server.1=zk-1:2888:3888;2181
+        server.2=zk-2:2888:3888;2181
+        server.3=zk-3:2888:3888;2181
+
+x-kafka-base: &kafka-base
+  image: wurstmeister/kafka
+  ports:
+    - 9092
+  depends_on:
+    - zk-1
+    - zk-2
+    - zk-3
+
+x-env-kafka-zk-connect: &env-kafka-zk-connect KAFKA_ZOOKEEPER_CONNECT=zk-1:2181, zk-2:2181, zk-3:2181
+
+
+services:
+    zk-1:
+        image: zookeeper:latest
+        container_name: zk-1
+        environment:
+            <<: *env-zoo-servers
+            ZOO_MY_ID: 1
+        ports:
+            - 2181:2181
+
+    zk-2:
+        image: zookeeper:latest
+        container_name: zk-2
+        environment:
+            <<: *env-zoo-servers
+            ZOO_MY_ID: 2
+        ports:
+            - 2182:2181
+
+    zk-3:
+        image: zookeeper:latest
+        container_name: zk-3
+        environment:
+            <<: *env-zoo-servers
+            ZOO_MY_ID: 3
+        ports:
+            - 2183:2181
+
+    kafka-1:
+        <<: *kafka-base
+        container_name: kafka-1
+        environment:
+            - *env-kafka-zk-connect
+            - KAFKA_BROKER_ID=1
+            - KAFKA_ADVERTISED_HOST_NAME=kafka-1
+
+    kafka-2:
+        <<: *kafka-base
+        container_name: kafka-2
+        environment:
+            - *env-kafka-zk-connect
+            - KAFKA_BROKER_ID=2
+            - KAFKA_ADVERTISED_HOST_NAME=kafka-2
+
+    kafka-3:
+        <<: *kafka-base
+        container_name: kafka-3
+        environment:
+            - *env-kafka-zk-connect
+            - KAFKA_BROKER_ID=3
+            - KAFKA_ADVERTISED_HOST_NAME=kafka-3
