@@ -43,3 +43,15 @@
   * ![Postman screenshot](screenshots/b3_postman.png)
 
 ### Task B4
+
+* Frontend is developed using React and styling is done using Semantic UI.
+* Uses previously deployed Google Cloud Function as backend so may not be very responsive.
+* To start the dev frontend server:
+
+  ```bash
+  cd frontend
+  npm install && npm start
+  ```
+
+* Screenshot:
+  * ![FE screenshot](screenshots/b4.png)
