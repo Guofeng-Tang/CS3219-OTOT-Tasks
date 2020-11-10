@@ -4,7 +4,7 @@ node_js:
 before_install: cd myapp
 install:
   - npm install
-scirpt:
+script:
   - npm test
 before_deploy:
   - npm install -g serverless
