@@ -17,9 +17,13 @@
 
 ### Task B1
 
-* First change to directory `myapp` 
-* Install dependency with `npm install`
-* Start server with `npm start`
+* First change to directory `myapp`, install dependency and start server with `npm install && npm start`
+
+  ```bash
+  cd frontend
+  npm install && npm start
+  ```
+
 * The backend server will be running on port `8081` at `http://localhost:8081`
 * Postman screenshot:
   * ![Postman screenshot](screenshots/b1_postman.png)
