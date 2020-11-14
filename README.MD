@@ -1,6 +1,6 @@
 # CS3219-Task-B: Nodejs Serverless Backend & React Frontend SPA
 
-[travis build history link]: https://travis-ci.org/github/Guofeng-Tang/CS3219-OTOT-Tasks/builds
+[travis build history link]: https://travis-ci.com/github/Guofeng-Tang/CS3219-OTOT-Tasks/builds
 [gcloud function link]: https://us-central1-cs3219-otot-task-b.cloudfunctions.net/my-gcloud-service-dev-TaskB3
 
 ## API endpoints
